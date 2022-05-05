@@ -1,0 +1,9 @@
+#ifndef COMMAND_AND_DOMINATE_SRC_GAME_OBJECT_IMMOVABLE_OBJECT_FORWARD_H_
+#define COMMAND_AND_DOMINATE_SRC_GAME_OBJECT_IMMOVABLE_OBJECT_FORWARD_H_
+
+#include <memory>
+
+class ImmovableObject;
+using ImmovableObjectPtr = std::shared_ptr<ImmovableObject>;
+
+#endif // !COMMAND_AND_DOMINATE_SRC_GAME_OBJECT_IMMOVABLE_OBJECT_FORWARD_H_

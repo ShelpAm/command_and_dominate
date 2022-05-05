@@ -1,0 +1,9 @@
+#ifndef COMMAND_AND_DOMINATE_SRC_GAME_OBJECT_MOVABLE_OBJECT_FORWARD_H_
+#define COMMAND_AND_DOMINATE_SRC_GAME_OBJECT_MOVABLE_OBJECT_FORWARD_H_
+
+#include <memory>
+
+class MovableObject;
+using MovableObjectPtr = std::shared_ptr<MovableObject>;
+
+#endif // !COMMAND_AND_DOMINATE_SRC_GAME_OBJECT_MOVABLE_OBJECT_FORWARD_H_

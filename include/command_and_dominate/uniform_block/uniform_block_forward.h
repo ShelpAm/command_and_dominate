@@ -1,0 +1,9 @@
+#ifndef COMMAND_AND_DOMINATE_SRC_UNIFORM_BLOCK_UNIFORM_BLOCK_FORWARD_H_
+#define COMMAND_AND_DOMINATE_SRC_UNIFORM_BLOCK_UNIFORM_BLOCK_FORWARD_H_
+
+#include <memory>
+
+class UniformBlock;
+using UniformBlockPtr = std::shared_ptr<UniformBlock>;
+
+#endif // !COMMAND_AND_DOMINATE_SRC_UNIFORM_BLOCK_UNIFORM_BLOCK_FORWARD_H_

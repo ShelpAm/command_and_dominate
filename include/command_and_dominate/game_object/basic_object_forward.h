@@ -1,0 +1,9 @@
+#ifndef COMMAND_AND_DOMINATE_SRC_GAME_OBJECT_BASIC_OBJECT_FORWARD_H_
+#define COMMAND_AND_DOMINATE_SRC_GAME_OBJECT_BASIC_OBJECT_FORWARD_H_
+
+#include <memory>
+
+class BasicObject;
+using BasicObjectPtr = std::shared_ptr<BasicObject>;
+
+#endif // !COMMAND_AND_DOMINATE_SRC_GAME_OBJECT_BASIC_OBJECT_FORWARD_H_

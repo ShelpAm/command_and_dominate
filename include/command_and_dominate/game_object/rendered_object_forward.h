@@ -1,0 +1,9 @@
+#ifndef COMMAND_AND_DOMINATE_SRC_GAME_OBJECT_RENDERED_OBJECT_FORWARD_H_
+#define COMMAND_AND_DOMINATE_SRC_GAME_OBJECT_RENDERED_OBJECT_FORWARD_H_
+
+#include <memory>
+
+class RenderedObject;
+using RenderedObjectPtr = std::shared_ptr<RenderedObject>;
+
+#endif // !COMMAND_AND_DOMINATE_SRC_GAME_OBJECT_RENDERED_OBJECT_FORWARD_H_

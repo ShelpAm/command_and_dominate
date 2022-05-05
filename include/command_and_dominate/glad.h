@@ -1,0 +1,6 @@
+#ifndef COMMAND_AND_DOMINATE_SRC_GLAD_H_
+#define COMMAND_AND_DOMINATE_SRC_GLAD_H_
+
+#include <glad/glad.h>
+
+#endif // !COMMAND_AND_DOMINATE_SRC_GLAD_H_
