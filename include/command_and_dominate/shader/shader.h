@@ -4,7 +4,7 @@
 #include "command_and_dominate/shader/shader_forward.h"
 #include <map>
 #include "command_and_dominate/glad.h"
-#include "command_and_dominate/math/math.h"
+#include "small_utility/math/math.h"
 #include "command_and_dominate/shader/shader_type_forward.h"
 #include "command_and_dominate/uniform_block/uniform_block_forward.h"
 

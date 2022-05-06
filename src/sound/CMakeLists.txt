@@ -1,3 +1,3 @@
-set (src_ .cc)
+set (src_sound wave.cc)
 
-add_library ( ${src_})
+add_library (sound ${src_sound})

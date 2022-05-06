@@ -1,7 +1,7 @@
 #ifndef COMMAND_AND_DOMINATE_SRC_MODEL_VERTEX_H_
 #define COMMAND_AND_DOMINATE_SRC_MODEL_VERTEX_H_
 
-#include "command_and_dominate/math/vector/vector.h"
+#include "small_utility/math/vector/vector.h"
 #include "command_and_dominate/model/vertex_forward.h"
 
 template<typename value_type> struct Vertex {

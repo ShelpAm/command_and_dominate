@@ -4,7 +4,7 @@
 #include "command_and_dominate/game_object/basic_object_forward.h"
 #include <map>
 #include "small_utility/string/string.h"
-#include "command_and_dominate/math/vector/vector3d.h"
+#include "small_utility/math/vector/vector3d.h"
 
 using small_utility::string_stuff::String;
 

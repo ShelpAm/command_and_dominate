@@ -1,3 +1,3 @@
-set (src_ .cc)
+set (src_model model.cc mesh.cc)
 
-add_library ( ${src_})
+add_library (model ${src_model})

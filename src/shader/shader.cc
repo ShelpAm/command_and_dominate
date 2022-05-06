@@ -1,7 +1,7 @@
 #include "command_and_dominate/shader/shader.h"
 #include <cstdio>
 #include <cstring>
-#include "command_and_dominate/math/math.h"
+#include "small_utility/math/math.h"
 #include "command_and_dominate/shader/shader_type.h"
 #include "command_and_dominate/uniform_block/uniform_block.h"
 

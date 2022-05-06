@@ -3,7 +3,7 @@
 #include "small_utility/utility/utility.h"
 #include "command_and_dominate/glad.h"
 #include "command_and_dominate/game_object/rendered_object.h"
-#include "command_and_dominate/math/math.h"
+#include "small_utility/math/math.h"
 #include "command_and_dominate/shader/shader.h"
 #include "command_and_dominate/uniform_block/uniform_block.h"
 

@@ -3,7 +3,7 @@
 
 #include "command_and_dominate/game_object/immovable_object_forward.h"
 #include "command_and_dominate/game_object/basic_object.h"
-#include "command_and_dominate/math/vector/vector3d.h"
+#include "small_utility/math/vector/vector3d.h"
 
 class ImmovableObject : virtual public BasicObject {
  public:

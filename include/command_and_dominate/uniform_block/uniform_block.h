@@ -5,7 +5,7 @@
 #include <map>
 #include "small_utility/string/string.h"
 #include "command_and_dominate/glad.h"
-#include "command_and_dominate/math/type_ptr.h"
+#include "small_utility/math/type_ptr.h"
 
 using small_utility::string_stuff::String;
 
