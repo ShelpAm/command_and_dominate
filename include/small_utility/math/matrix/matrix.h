@@ -1,0 +1,6 @@
+#ifndef COMMAND_AND_DOMINATE_SRC_MATH_MATRIX_MATRIX_H_
+#define COMMAND_AND_DOMINATE_SRC_MATH_MATRIX_MATRIX_H_
+
+#include "small_utility/math/matrix/matrix4x4.h"
+
+#endif // !COMMAND_AND_DOMINATE_SRC_MATH_MATRIX_MATRIX_H_

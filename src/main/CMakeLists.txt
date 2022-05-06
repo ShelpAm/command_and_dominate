@@ -13,7 +13,7 @@ target_link_libraries (command_and_dominate
 	image
 	light
 #	memory_tracer
-#	model
+	model
 	shader
 	sound
 	uniform_block

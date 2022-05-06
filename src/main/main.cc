@@ -13,10 +13,17 @@
 //GamePtr game_ptr;
 
 int main(int argc, char *argv[]) {
-  printf("linux, command_and_dominate is coming!\n");
+  printf("linux, command_and_dominate is coming!wtffff\n");
+  printf("break point4");
+  printf("break point4");
+
+  printf("break point4");
   if (!Game::Initialize(argc, argv)) {
     return -1;
   }
+
+  printf("break point3");
+
   WindowPtr window_ptr = Window::Create(
       400, 300, "new_window",
       framebuffer_size_callback,
@@ -24,10 +31,16 @@ int main(int argc, char *argv[]) {
       cursor_position_callback,
       key_callback,
       scroll_callback);
+
+  printf("break point2");
+
   GamePtr game_ptr = Game::Create(window_ptr);
   if (!game_ptr) {
     return -2;
   }
+
+  printf("break point1");
+
   game_ptr->Run();
   game_ptr->Delete();
 
