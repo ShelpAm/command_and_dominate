@@ -14,15 +14,10 @@
 
 int main(int argc, char *argv[]) {
   printf("linux, command_and_dominate is coming!wtffff\n");
-  printf("break point4");
-  printf("break point4");
 
-  printf("break point4");
   if (!Game::Initialize(argc, argv)) {
     return -1;
   }
-
-  printf("break point3");
 
   WindowPtr window_ptr = Window::Create(
       400, 300, "new_window",
@@ -32,14 +27,14 @@ int main(int argc, char *argv[]) {
       key_callback,
       scroll_callback);
 
-  printf("break point2");
+  printf("break point2\n");
 
   GamePtr game_ptr = Game::Create(window_ptr);
   if (!game_ptr) {
     return -2;
   }
 
-  printf("break point1");
+  printf("break point1\n");
 
   game_ptr->Run();
   game_ptr->Delete();
@@ -56,7 +51,7 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height) {
   Window::Get(window)->SetWindowWidth(width);
   Window::Get(window)->SetWindowHeight(height);
   printf("[Debug::framebuffer_size_callback] width: %i, height: %i.\n", width,
-         height);
+      height);
 }
 
 // This is used for function "mouse_callback".
@@ -67,7 +62,7 @@ bool first_mouse = true;
 void char_callback(GLFWwindow *window, unsigned int codepoint) {}
 
 void key_callback(GLFWwindow *window, int key, int scancode, int action,
-                  int mods) {
+    int mods) {
   KeyType key_type;
   if (key >= 48 && key < 58) { key_type = KeyType::kKeyTypeNumberKey;
   } else if (key >= 65 && key < 91 ) { key_type = KeyType::kKeyTypeLetterKey;
@@ -76,12 +71,12 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action,
   if (action == GLFW_PRESS) {
     Game::keys_[key] = true;
     Game::keys_pressed_single_times_[key] =
-        !Game::keys_pressed_single_times_[key];
+      !Game::keys_pressed_single_times_[key];
     if (key_type == KeyType::kKeyTypeNumberKey) {
     } else if (key_type == KeyType::kKeyTypeLetterKey) {
       Game::keys_[key + 32] = true;
       Game::keys_pressed_single_times_[key + 32] =
-          !Game::keys_pressed_single_times_[key + 32];
+        !Game::keys_pressed_single_times_[key + 32];
     } else if (key_type == KeyType::kKeyTypeNonprintableKey) {
     }
   }
@@ -96,7 +91,7 @@ void key_callback(GLFWwindow *window, int key, int scancode, int action,
 }
 
 void cursor_position_callback(GLFWwindow *window,
-                              double xpos, double ypos) {
+    double xpos, double ypos) {
   double delta_x = 0, delta_y = 0;
   if (first_mouse) {
     last_x = xpos;
@@ -110,8 +105,8 @@ void cursor_position_callback(GLFWwindow *window,
   last_x = xpos;
   last_y = ypos;
 
-//  Game::GetCameras().ProcessMouseMovement(static_cast<float>(delta_x),
-//                                 static_cast<float>(delta_y));
+  //  Game::GetCameras().ProcessMouseMovement(static_cast<float>(delta_x),
+  //                                 static_cast<float>(delta_y));
 }
 
 void scroll_callback(GLFWwindow *window, double xoffset, double yoffset) {

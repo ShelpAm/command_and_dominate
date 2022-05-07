@@ -5,3 +5,7 @@ build/
 *.un~
 *.swp
 *.swo
+
+#system cache
+#  linux
+core

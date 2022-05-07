@@ -39,9 +39,11 @@ GamePtr Game::Create(WindowPtr const &window_ptr) {
       shader_ptr0->BindUniformBlock(uniform_block_ptr0);
     }
   }
-  RenderedObjectPtr rp = RenderedObject::Create("0");
-  game_ptr->rendered_object_ptrs_.push_back(rp);
-  game_ptr->state_ = GameState::kGameStateOnMenu;
+  // ------BUG-------
+  // if you run following code, the program will receive SEGMENT FAULT
+  //RenderedObjectPtr rp = RenderedObject::Create("0");
+  //game_ptr->rendered_object_ptrs_.push_back(rp);
+  game_ptr->game_state_ = GameState::kGameStateOnMenu;
   return game_ptr;
 }
 
@@ -51,29 +53,37 @@ Game::Game(WindowPtr const &window_ptr)
       blend_default_(true),
       pause_(false),
       pause_default_(false),
-      begin_time_(0.0f),
-      end_time_(0.0f),
-      delta_time_(0.0f),
-      state_(GameState::kGameStateStarted) {}
+      game_state_(GameState::kGameStateStarted) {}
 
 Game::~Game() {
   Delete();
 }
 
 void Game::Run() {
+  int begin_time = 0, end_time = 0, delta_time = 0, sleep_time = 0;
+  float constexpr target_fps = 30;
   while (!glfwWindowShouldClose(window_ptr_->GetGLFWWindowPtr())) {
     glfwPollEvents();
 
     glClearColor(//1.0f, 1.0f, 1.0f, 1.0f
-                 0.5f, 0.5f, 0.5f, 1.0f
-                 //0.0f, 0.0f, 0.0f, 1.0f
-                 );
+        0.5f, 0.5f, 0.5f, 1.0f
+        //0.0f, 0.0f, 0.0f, 1.0f
+        );
     glClear(GL_COLOR_BUFFER_BIT);
 
     ProcessInput();
 
-    Update();
+    // all the units of time is millisecond,
+    // and the unit of return value of glfwGetTime() is microsecond
+    end_time = glfwGetTime() * 1000;
+    delta_time = end_time - begin_time;
+    sleep_time = 1000 / target_fps - delta_time;
+    printf("[Debug::Game::Update] delta_time_: %i.\n", delta_time);
+    printf("[Debug::Game::Update] sleep_time: %i.\n", sleep_time);
+    small_utility::utility::Sleep(sleep_time);
+    begin_time = glfwGetTime() * 1000;
 
+    Update(delta_time);
     Render();
 
     glfwSwapBuffers(window_ptr_->GetGLFWWindowPtr());
@@ -86,23 +96,15 @@ void Game::ProcessInput() {
   }
 }
 
-void Game::Update() {
-  end_time_ = glfwGetTime() * 1000;
-  delta_time_ = end_time_ - begin_time_;
-  int sleep_time = 1000 / 5 - delta_time_;
-  printf("[Debug::Game::Update] delta_time_: %i.\n", delta_time_);
-  printf("[Debug::Game::Update] sleep_time: %i.\n", sleep_time);
-  small_utility::utility::Sleep(sleep_time);
-  begin_time_ = glfwGetTime() * 1000;
-
+void Game::Update(float const delta_time) {
   for (auto &iterator : rendered_object_ptrs_) {
-    iterator->Update(1000 / 5);
+    iterator->Update(delta_time);
   }
 }
 
 void Game::Render() const {
-  if (state_ == GameState::kGameStateOnMenu) {
-  } else if (state_ == GameState::kGameStateStarted) {
+  if (game_state_ == GameState::kGameStateOnMenu) {
+  } else if (game_state_ == GameState::kGameStateStarted) {
     // Send datas to gpu
     UniformBlockPtr uniform_block_ptr0 = UniformBlock::Get("0");
     ShaderPtr shader_ptr0 = Shader::Get("0");

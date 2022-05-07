@@ -25,22 +25,19 @@ class Game {
   void Run();
   void ProcessInput();
   void ProcessMovementKey();
-  void ProcessXZAxis();
-  void ProcessYAxis();
-  void Update();
+  void ProcessAxisXZ();
+  void ProcessAxisY();
+  void Update(float const delta_time);
   void Render() const;
   void Delete();
 
   WindowPtr GetWindowPtr() { return window_ptr_; }
-  bool const GetBlend() const { return blend_; }
-  bool const GetBlendDefault() const { return blend_default_; }
-  float const GetFramePerSecond() const { return 1.0f / delta_time_; }
-  bool const GetPause() const { return pause_; }
-  bool const GetPauseDefault() const { return pause_default_; }
-  std::vector<CameraPtr> GetCameraPtrs() const { return camera_ptrs_; }
-  void AddCamera(CameraPtr camera_ptr) {
-    camera_ptrs_.push_back(camera_ptr);
-  }
+  bool GetBlend() const { return blend_; }
+  bool GetBlendDefault() const { return blend_default_; }
+  bool GetPause() const { return pause_; }
+  bool GetPauseDefault() const { return pause_default_; }
+  std::vector<CameraPtr> const &GetCameraPtrs() const { return camera_ptrs_; }
+  void AddCamera(CameraPtr camera_ptr) { camera_ptrs_.push_back(camera_ptr); }
 
   static bool keys_[348];
   static bool keys_pressed_single_times_[348];
@@ -55,13 +52,7 @@ class Game {
   bool pause_;
   bool pause_default_;
 
-  // The units of following are all milliseconds.
-  int begin_time_;
-  int end_time_;
-  int delta_time_;
-  //float frame_per_second_;
-
-  GameState state_;
+  GameState game_state_;
 
   std::vector<CameraPtr> camera_ptrs_;
   std::vector<RenderedObjectPtr> rendered_object_ptrs_;

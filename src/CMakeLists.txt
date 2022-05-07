@@ -1,8 +1,14 @@
 set (CMAKE_BUILD_TYPE "DEBUG")
+#set (CMAKE_BUILD_TYPE "RELEASE")
+
+set (thirdparty_directory ${PROJECT_SOURCE_DIR}/thirdparty)
 
 set (include_native ${PROJECT_SOURCE_DIR}/include)
-set (include_shared ${PROJECT_SOURCE_DIR}/shared/include)
-set (includes ${include_native} ${include_shared})
+set (include_thirdparty
+	${thirdparty_directory}/glad/include
+	${thirdparty_directory}/glfw-3.3.7/include
+)
+set (includes ${include_native} ${include_thirdparty})
 
 include_directories (${includes})
 
