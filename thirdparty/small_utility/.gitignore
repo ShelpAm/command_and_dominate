@@ -1,0 +1,20 @@
+# Xmake cache
+.xmake/
+build/
+.deps/
+vs20*
+cmake/
+
+# MacOS Cache
+.DS_Store
+
+#vim cache
+*.un~
+*.swp
+*.swo
+
+# linux cache
+core
+
+# temporary
+*.tmp
