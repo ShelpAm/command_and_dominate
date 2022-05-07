@@ -1,6 +1,7 @@
+set (CMAKE_BUILD_TYPE "DEBUG")
+
 set (include_native ${PROJECT_SOURCE_DIR}/include)
 set (include_shared ${PROJECT_SOURCE_DIR}/shared/include)
-
 set (includes ${include_native} ${include_shared})
 
 include_directories (${includes})
