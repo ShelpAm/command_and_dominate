@@ -7,6 +7,7 @@ set (include_native ${PROJECT_SOURCE_DIR}/include)
 set (include_thirdparty
 	${thirdparty_directory}/glad/include
 	${thirdparty_directory}/glfw-3.3.7/include
+	${thirdparty_directory}/small_utility/include
 )
 set (includes ${include_native} ${include_thirdparty})
 

@@ -1,9 +1,10 @@
 #include "command_and_dominate/game/game.h"
 #include <cstdio>
+#include "small_utility/math/math.h"
+#include "small_utility/string/string.h"
 #include "small_utility/utility/utility.h"
 #include "command_and_dominate/glad.h"
 #include "command_and_dominate/game_object/rendered_object.h"
-#include "small_utility/math/math.h"
 #include "command_and_dominate/shader/shader.h"
 #include "command_and_dominate/uniform_block/uniform_block.h"
 
@@ -74,13 +75,15 @@ void Game::Run() {
     ProcessInput();
 
     // all the units of time is millisecond,
-    // and the unit of return value of glfwGetTime() is microsecond
+    // and the unit of return value of glfwGetTime() is second
     end_time = glfwGetTime() * 1000;
     delta_time = end_time - begin_time;
+
     sleep_time = 1000 / target_fps - delta_time;
     printf("[Debug::Game::Update] delta_time_: %i.\n", delta_time);
     printf("[Debug::Game::Update] sleep_time: %i.\n", sleep_time);
-    small_utility::utility::Sleep(sleep_time);
+    small_utility::utility_stuff::Sleep(sleep_time);
+
     begin_time = glfwGetTime() * 1000;
 
     Update(delta_time);

@@ -101,13 +101,13 @@ char String::operator[](int const index) const {
 }
 
 void String::Swap(String &rhs) {
-  utility::Swap(data_, rhs.data_);
-  utility::Swap(size_, rhs.size_);
-  utility::Swap(capacity_, rhs.capacity_);
+  utility_stuff::Swap(data_, rhs.data_);
+  utility_stuff::Swap(size_, rhs.size_);
+  utility_stuff::Swap(capacity_, rhs.capacity_);
 }
 
 void String::PushBack(char const c) {
-  if (utility::Equal(size_, capacity_)) {
+  if (utility_stuff::Equal(size_, capacity_)) {
     Reserve(capacity_ ? capacity_ * 2 : 4);
   }
   data_[size_] = c;
@@ -154,7 +154,7 @@ void String::Resize(int const size, char c) {
 
 void String::Insert(char const c, int const position) {
   assert(position >= 0 && position <= size_);
-  if (utility::Equal(size_, capacity_)) {
+  if (utility_stuff::Equal(size_, capacity_)) {
     Reserve(capacity_ ? capacity_ * 2 : 4);
   }
   for (int i = size_ + 1; i != position; --i) {
@@ -198,7 +198,7 @@ void String::Clear() {
 int String::Find(char const c, int const position) const {
   assert(position >= 0 && position <= size_);
   for (int i = position; i != size_; ++i) {
-    if (utility::Equal(data_[i], c)) {
+    if (utility_stuff::Equal(data_[i], c)) {
       return i;
     }
   }
@@ -217,7 +217,7 @@ int String::Find(char const *const str, int const position) const {
 
 int String::Replace(char const from, char const to, int const position) {
   int pos = Find(from, position);
-  if (utility::Equal(pos, -1)) {
+  if (utility_stuff::Equal(pos, -1)) {
     return -1;
   }
   data_[pos] = position;
@@ -227,7 +227,7 @@ int String::Replace(char const from, char const to, int const position) {
 int String::Replace(char const *const from, char const *const to,
               int const position) {
   int pos = Find(from, position);
-  if (utility::Equal(pos, -1)) {
+  if (utility_stuff::Equal(pos, -1)) {
     return -1;
   }
   //String temp(SubStringLength(0, pos));

@@ -18,11 +18,11 @@ set (libraries
 	uniform_block
 	window
 	glad
-	${CMAKE_DL_LIBS}
 	small_utility
 	glfw
 	pthread
 	X11
+	${CMAKE_DL_LIBS}
 )
 
 target_link_libraries (command_and_dominate ${libraries})

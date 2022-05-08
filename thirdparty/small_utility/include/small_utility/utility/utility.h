@@ -12,7 +12,7 @@
 
 namespace small_utility {
 
-namespace utility {
+namespace utility_stuff {
 
 #if defined SMALL_UTILITY_LINUX
 
@@ -70,7 +70,7 @@ inline type operator+(type const &lhs, type const &rhs) {
   return type(lhs) += rhs;
 }
 
-} // namespace utility
+} // namespace utility_stuff
 
 } // namespace small_utility
 

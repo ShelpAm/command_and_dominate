@@ -2,7 +2,7 @@
 
 namespace small_utility {
 
-namespace utility {
+namespace utility_stuff {
 
 #if defined SMALL_UTILITY_LINUX
 void SleepLinux (int const time) {
@@ -36,6 +36,7 @@ void SleepWindows(int const time) {
            "than 0.\n", time);
     return;
   }
+#undef Sleep
   Sleep(time);
 }
 
@@ -51,6 +52,6 @@ int const PcloseWindows(FILE* file_ptr) {
 # error no_corresponding_platform
 #endif
 
-} // namespace utility
+} // namespace utility_stuff
 
 } // namespace small_utility
