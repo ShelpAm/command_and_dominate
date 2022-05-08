@@ -1,7 +1,6 @@
 #include "command_and_dominate/game/game.h"
 #include <cstdio>
 #include "small_utility/math/math.h"
-#include "small_utility/string/string.h"
 #include "small_utility/utility/utility.h"
 #include "command_and_dominate/glad.h"
 #include "command_and_dominate/game_object/rendered_object.h"

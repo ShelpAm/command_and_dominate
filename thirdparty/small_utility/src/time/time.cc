@@ -47,7 +47,7 @@ Time const &Time::SetToCurrentTimeLinux() {
 #endif
 
 void Time::Swap(Time &rhs) {
-  utility::Swap(*this, rhs);
+  utility_stuff::Swap(*this, rhs);
 }
 
 } // namespace time_stuff

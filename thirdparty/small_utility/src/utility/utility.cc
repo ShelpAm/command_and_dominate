@@ -2,12 +2,12 @@
 
 namespace small_utility {
 
-namespace utility {
+namespace utility_stuff {
 
 #if defined SMALL_UTILITY_LINUX
 void SleepLinux (int const time) {
   if (time < 0) {
-    printf("[ERROR::small_utility::Sleep] The delay time is smaller"
+    printf("[ERROR::small_utility_stuff::Sleep] The delay time is smaller"
            "than 0, as big as %i.\n", time);
     return;
   }
@@ -16,7 +16,7 @@ void SleepLinux (int const time) {
   ts.tv_nsec = (time % 1000) * 1000 * 1000;
   int const error = nanosleep(&ts, nullptr);
   if (error == -1) {
-    printf("[Warn::small_utility::Sleep] Sleeping has been interrupted.");
+    printf("[Warn::small_utility_stuff::Sleep] Sleeping has been interrupted.");
   }
 }
 
@@ -32,7 +32,7 @@ int const PcloseLinux(FILE* file_ptr) {
 
 void SleepWindows(int const time) {
   if (time < 0) {
-    printf("[ERROR::small_utility::Sleep] The delay time (%i) is smaller"
+    printf("[ERROR::small_utility_stuff::Sleep] The delay time (%i) is smaller"
            "than 0.\n", time);
     return;
   }
@@ -51,6 +51,6 @@ int const PcloseWindows(FILE* file_ptr) {
 # error no_corresponding_platform
 #endif
 
-} // namespace utility
+} // namespace utility_stuff
 
 } // namespace small_utility

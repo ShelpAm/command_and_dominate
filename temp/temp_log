@@ -1,4 +1,0 @@
-[2022-05-07 16:07:26] INFO /home/small-sheep/code/c-cpp/command_and_dominate/thirdparty/small_utility/test/log/main.cc:19 in function 'main()': Info
-[2022-05-07 16:07:26] ERROR /home/small-sheep/code/c-cpp/command_and_dominate/thirdparty/small_utility/test/log/main.cc:20 in function 'main()': Test error
-[2022-05-07 16:07:26] FATAL /home/small-sheep/code/c-cpp/command_and_dominate/thirdparty/small_utility/test/log/main.cc:21 in function 'main()': Fatal! test
-[2022-05-07 16:07:26] WARN /home/small-sheep/code/c-cpp/command_and_dominate/thirdparty/small_utility/test/log/main.cc:22 in function 'main()': Warn test

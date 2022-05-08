@@ -21,7 +21,7 @@ void Logger::AddLogMessageInfo(LogMessageInfo const &log_message_info) {
 // TODO(small_sheep_ 1178550325@qq.com): This Method should be expanded and
 //                                       abstacted.
 void Logger::WriteToTarget(char const *const target) {
-  if (utility::Equal(target, "console")) {
+  if (utility_stuff::Equal(target, "console")) {
     for (auto const &i : log_message_infos_) {
       if (i.log_level >= log_level_minimum_) {
         printf(i.message.CStr());
@@ -162,12 +162,12 @@ int ProcessLogMessage(
 
   for (int i = 0; i != pattern_string.Size(); ) {
     int left_position = pattern_string.Find("$(", i);
-    if (utility::Equal(left_position, -1)) {
+    if (utility_stuff::Equal(left_position, -1)) {
       log_message += pattern_string.SubStringIndex(i, pattern_string.Size()-1);
       break;
     }
     int right_position = pattern_string.Find(")", left_position);
-    if (utility::Equal(right_position, -1)) {
+    if (utility_stuff::Equal(right_position, -1)) {
       log_message += pattern_string.SubStringIndex(left_position + 2,
                                                    pattern_string.Size() - 1);
       break;
@@ -179,7 +179,7 @@ int ProcessLogMessage(
     buffer_string = pattern_string.SubStringIndex(left_position + 2,
                                                   right_position - 1);
     it = pattern_map.find(buffer_string);
-    buffer_string = utility::Equal(it, pattern_map.end()) ?  "" : (*it).second;
+    buffer_string = utility_stuff::Equal(it, pattern_map.end()) ?  "" : (*it).second;
     log_message += buffer_string;
   }
   */
