@@ -6,6 +6,10 @@
 **/*.swp
 **/*.swo
 
+#git cache
+**/.git
+!./.git
+
 #system cache
 #  linux
 **/core
