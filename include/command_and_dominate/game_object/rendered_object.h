@@ -13,7 +13,7 @@ class RenderedObject
       public ImmovableObject {
  public:
   static RenderedObjectPtr Create(
-      char const *const name,
+      char const *const name = "undefined",
       ModelPtr<float> const &model_ptr = nullptr,
       float const mass = 1.0f,
       Vector3D<float> const &force = Vector3D<float>(0.0f),
@@ -22,7 +22,7 @@ class RenderedObject
       float const pitch = 0.0f,
       float const yaw = 0.0f,
       float const scroll = 0.0f,
-      char const *const ui_name = nullptr);
+      char const *const ui_name = "undefined");
   RenderedObject(
       ModelPtr<float> const &model_ptr,
       float const mass,

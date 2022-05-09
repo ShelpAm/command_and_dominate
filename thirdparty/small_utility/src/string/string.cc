@@ -13,10 +13,12 @@ namespace small_utility {
 
 namespace string_stuff {
 
-String::String(char const *const rhs) : size_(strlen(rhs)), capacity_(size_) {
+String::String(char const *const rhs) {
   assert(rhs);
+  size_ = strlen(rhs);
   data_ = new char[size_ + 1];
   memcpy(data_, rhs, size_ + 1);
+  capacity_ = size_;
 }
 
 String::String(int const integer, char const *const padding) : data_(nullptr) {

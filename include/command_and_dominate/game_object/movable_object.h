@@ -9,7 +9,7 @@
 class MovableObject : virtual public BasicObject {
  public:
   static MovableObjectPtr Create(
-      char const *const name,
+      char const *const name = "undefined",
       float const mass = 1.0f,
       Vector3D<float> const &force = Vector3D<float>(0.0f),
       Vector3D<float> const &velocity = Vector3D<float>(0.0f),
@@ -17,7 +17,7 @@ class MovableObject : virtual public BasicObject {
       float const pitch = 0.0f,
       float const yaw = 0.0f,
       float const scroll = 0.0f,
-      char const *const ui_name = nullptr);
+      char const *const ui_name = "undefined");
   MovableObject(
       float const mass,
       Vector3D<float> const &force,

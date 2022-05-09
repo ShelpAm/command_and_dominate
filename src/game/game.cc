@@ -41,8 +41,8 @@ GamePtr Game::Create(WindowPtr const &window_ptr) {
   }
   // ------BUG-------
   // if you run following code, the program will receive SEGMENT FAULT
-  //RenderedObjectPtr rp = RenderedObject::Create("0");
-  //game_ptr->rendered_object_ptrs_.push_back(rp);
+  RenderedObjectPtr rp = RenderedObject::Create("0");
+  game_ptr->rendered_object_ptrs_.push_back(rp);
   game_ptr->game_state_ = GameState::kGameStateOnMenu;
   return game_ptr;
 }
@@ -79,8 +79,8 @@ void Game::Run() {
     delta_time = end_time - begin_time;
 
     sleep_time = 1000 / target_fps - delta_time;
-    printf("[Debug::Game::Update] delta_time_: %i.\n", delta_time);
-    printf("[Debug::Game::Update] sleep_time: %i.\n", sleep_time);
+    printf("[Debug::Game::Update] delta_time_: %ims.\n", delta_time);
+    printf("[Debug::Game::Update] sleep_time: %ims.\n", sleep_time);
     small_utility::utility_stuff::Sleep(sleep_time);
 
     begin_time = glfwGetTime() * 1000;
