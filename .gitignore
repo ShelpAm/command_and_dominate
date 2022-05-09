@@ -6,6 +6,9 @@ build/
 *.swp
 *.swo
 
+#git cache
+*/.git/
+
 #system cache
 #  linux
 core

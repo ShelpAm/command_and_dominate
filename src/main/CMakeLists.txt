@@ -29,7 +29,7 @@ set (linux_libraries
 )
 
 set (windows_libraries
-	" "
+
 )
 
 if (UNIX)

@@ -36,6 +36,7 @@ void SleepWindows(int const time) {
            "than 0.\n", time);
     return;
   }
+#undef Sleep
   Sleep(time);
 }
 
