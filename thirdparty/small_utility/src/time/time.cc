@@ -43,7 +43,10 @@ Time const &Time::SetToCurrentTimeLinux() {
   return *this;
 }
 #elif defined SMALL_UTILITY_WINDOWS
-  Time const &Time::SetToCurrentTimeWindows() {}
+  Time const &Time::SetToCurrentTimeWindows() {
+    //TODO(small_sheep_ 1178550325@qq.com) please finish this function
+    return Time();
+  }
 #endif
 
 void Time::Swap(Time &rhs) {

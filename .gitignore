@@ -1,14 +1,11 @@
 #cmake
-build/
+**/build/
 
 #vim cache
-*.un~
-*.swp
-*.swo
-
-#git cache
-*/.git/
+**/*.un~
+**/*.swp
+**/*.swo
 
 #system cache
 #  linux
-core
+**/core
