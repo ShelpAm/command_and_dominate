@@ -1,0 +1,6 @@
+[submodule "thirdparty/small_utility"]
+	path = thirdparty/small_utility
+	url = https://github.com/Small-Sheep-nice/small_utility.git
+[submodule "thirdparty/glfw"]
+	path = thirdparty/glfw
+	url = https://github.com/glfw/glfw.git
