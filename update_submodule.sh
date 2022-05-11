@@ -9,6 +9,4 @@ do
 	echo $i updated.
 done
 
-cd ..
-git submodule update > /dev/null
 echo Updating done.
