@@ -1,1 +1,1 @@
-build/src/main/command_and_dominate
+build/src/main/main

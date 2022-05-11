@@ -33,7 +33,9 @@ RenderedObject::RenderedObject(
 
 RenderedObject::~RenderedObject() {}
 
-void RenderedObject::Render(ShaderPtr const &shader_ptr) const {}
+void RenderedObject::Render(ShaderPtr const &shader_ptr) const {
+
+}
 
 void RenderedObject::Update(int const delta_time) {
   AddPosition(GetVelocity() * (delta_time / 1000.0f));

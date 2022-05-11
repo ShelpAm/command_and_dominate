@@ -1,10 +1,8 @@
-set (CMAKE_BUILD_TYPE "DEBUG")
-#set (CMAKE_BUILD_TYPE "RELEASE")
-
 set (thirdparty_directory ${PROJECT_SOURCE_DIR}/thirdparty)
 
 set (include_native ${PROJECT_SOURCE_DIR}/include)
 set (include_thirdparty
+	${thirdparty_directory}/assimp/include
 	${thirdparty_directory}/glad/include
 	${thirdparty_directory}/glfw-3.3.7/include
 	${thirdparty_directory}/small_utility/include
@@ -20,7 +18,6 @@ add_subdirectory (game_object)
 add_subdirectory (image)
 add_subdirectory (light)
 add_subdirectory (main)
-add_subdirectory (model)
 add_subdirectory (shader)
 add_subdirectory (sound)
 add_subdirectory (uniform_block)

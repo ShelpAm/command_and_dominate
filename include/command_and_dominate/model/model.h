@@ -15,7 +15,8 @@ template<typename value_type> class Model {
   Model(std::vector<MeshPtr<value_type>> mesh_ptrs);
 
  private:
-  static std::map<char const *const, MeshPtr<value_type>> all_;
+  static std::map<small_utility::string_stuff::String const &,
+                  MeshPtr<value_type>> all_;
 
   std::vector<MeshPtr<value_type>> mesh_ptrs_;
 };

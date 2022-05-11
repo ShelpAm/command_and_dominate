@@ -1,6 +1,7 @@
 #ifndef COMMAND_AND_DOMINATE_SRC_WINDOW_WINDOW_H_
 #define COMMAND_AND_DOMINATE_SRC_WINDOW_WINDOW_H_
 
+#include <exception>
 #include <map>
 #include "small_utility/string/string.h"
 #include "command_and_dominate/window/window_forward.h"
@@ -12,7 +13,7 @@ using small_utility::string_stuff::String;
 class Window
 {
  public:
-  static bool const Initialize();
+  static void Initialize();
   // Note:
   //  This function must be called after all the function called in opengl
   //   because they will be invalid after calling this.
@@ -64,6 +65,11 @@ class Window
   int window_width_;
   int window_height_;
   String window_title_;
+};
+
+class WindowUninitialized : public std::runtime_error {
+ public:
+  WindowUninitialized(char const *const what) : std::runtime_error(what) {}
 };
 
 #endif // !COMMAND_AND_DOMINATE_SRC_WINDOW_WINDOW_H_

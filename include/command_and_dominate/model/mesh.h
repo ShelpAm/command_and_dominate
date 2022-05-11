@@ -2,7 +2,6 @@
 #define COMMAND_AND_DOMINATE_SRC_MODEL_MESH_H_
 
 #include <vector>
-
 #include "command_and_dominate/image/image2d_forward.h"
 #include "command_and_dominate/model/mesh_forward.h"
 #include "command_and_dominate/shader/shader_forward.h"
@@ -23,10 +22,10 @@ template<typename value_type> class Mesh {
   void Delete();
 
  private:
-  void InitializeMesh();
+  void Initialize();
 
   unsigned int vao_, vbo_, ebo_;
-  std::vector<VertexPtr<value_type>> vertices_;
+  std::vector<Vertex<value_type>> vertices_;
   std::vector<unsigned int> indices_;
   std::vector<Image2DPtr> images_;
 };

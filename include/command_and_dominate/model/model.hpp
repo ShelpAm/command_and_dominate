@@ -1,11 +1,11 @@
-#include "command_and_dominate/model/model.h"
-
 template<typename value_type> ModelPtr<value_type> Model<value_type>::Create(
     char const *const name, char const *const filename) {
   // Load model from file.
   // And call the other Create function.
+  std::vector<MeshPtr<value_type>> mesh_ptrs;
 
-  //return Create(name, mesh_ptrs);
+
+  return Model::Create(name, mesh_ptrs);
 }
 
 template<typename value_type> ModelPtr<value_type> Model<value_type>::Create(

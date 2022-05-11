@@ -1,14 +1,12 @@
 #cmake
 **/build/
+**/Debug/
+**/Release/
 
 #vim cache
 **/*.un~
 **/*.swp
 **/*.swo
-
-#git cache
-**/.git
-!./.git
 
 #system cache
 #  linux

@@ -6,8 +6,9 @@
 
 template<typename value_type> struct Vertex {
  public:
+  Vertex();
   Vertex(Vector3D<value_type> _position, Vector3D<value_type> _normal,
-      Vector3D<value_type> _texture_coordinate);
+         Vector3D<value_type> _texture_coordinate);
   ~Vertex();
 
   Vector3D<value_type> position;

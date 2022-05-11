@@ -29,6 +29,6 @@ void main() {
   fragment_input.normal = mat3(transpose(inverse(model))) * normal;
   fragment_input.texture_coordinate = texture_coordinate;
 
-  gl_Position = vec4(0.5f);
+  gl_Position = converted_position;
 }
 

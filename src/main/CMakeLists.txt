@@ -1,8 +1,8 @@
 set (src_main main.cc)
 
-add_executable (command_and_dominate ${src_main})
+add_executable (main ${src_main})
 
-target_link_directories (command_and_dominate PUBLIC ${PROJECT_SOURCE_DIR}/lib)
+target_link_directories (main PUBLIC ${PROJECT_SOURCE_DIR}/lib)
 
 set (base_libraries
 	camera
@@ -12,11 +12,11 @@ set (base_libraries
 	image
 	light
 #	memory_tracer
-	model
 	shader
 	sound
 	uniform_block
 	window
+	assimp
 	glad
 	small_utility
 	glfw
@@ -38,4 +38,4 @@ elseif (WIN32)
 	set (libraries ${base_libraries} ${windows_libraries})
 endif ()
 
-target_link_libraries (command_and_dominate ${libraries})
+target_link_libraries (main ${libraries})

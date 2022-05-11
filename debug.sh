@@ -1,1 +1,1 @@
-gdb build/src/main/command_and_dominate
+gdb build/src/main/main

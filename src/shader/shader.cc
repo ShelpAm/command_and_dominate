@@ -1,6 +1,7 @@
 #include "command_and_dominate/shader/shader.h"
 #include <cstdio>
 #include <cstring>
+#include "small_utility/log/logger.h"
 #include "small_utility/math/math.h"
 #include "command_and_dominate/shader/shader_type.h"
 #include "command_and_dominate/uniform_block/uniform_block.h"
@@ -15,25 +16,35 @@ ShaderPtr Shader::Create(char const *const name,
                          char const *const vertex_file_name,
                          char const *const fragment_file_name,
                          char const *const geometry_file_name) {
-  char const *const filenames[3] = {vertex_file_name,
-                                    fragment_file_name,
-                                    geometry_file_name};
-  // compile shaders from files, and attach them to the shader program.
+  small_utility::log_stuff::Debug("creating shaders");
+  char const *const filenames[3] =
+      {vertex_file_name, fragment_file_name, geometry_file_name};
+  // Compile shaders from files, and attach them to the shader program.
   FILE *file_ptrs[3];
   unsigned int shader_id;
   int file_size;
-  for (int i = 0; i != 3; ++i) {
-    file_ptrs[i] = fopen(filenames[i], "rb");
-    if (!file_ptrs[i]) {
-      printf("[ERROR::Shader::Create] Failed to load file: %s.\n",
-             filenames[i]);
-      for (int j = 0; j != i; ++j) {
-        fclose(file_ptrs[j]);
+  using small_utility::string_stuff::String;
+  int i = 0;
+  try {
+    // Firstly open three files.
+    for (; i != 3; ++i) {
+      file_ptrs[i] = fopen(filenames[i], "rb");
+      if (!file_ptrs[i]) {
+        String error_buffer("unable to open file ");
+        error_buffer += filenames[i];
+        small_utility::log_stuff::Error(error_buffer.ConstData());
+        throw std::runtime_error(error_buffer.ConstData());
       }
-      return nullptr;
     }
+  } catch (std::exception const &e) {
+    // If some errors occured, close all the files opened before.
+    for (int j = 0; j != i; ++j) {
+      fclose(file_ptrs[j]);
+    }
+    throw;
   }
   all_[name] = std::make_shared<Shader>();
+  // Then read the files and compile them into shaders.
   for (int i = 0; i != 3; ++i) {
     fseek(file_ptrs[i], 0, SEEK_END);
     file_size = ftell(file_ptrs[i]);
@@ -41,7 +52,6 @@ ShaderPtr Shader::Create(char const *const name,
     char *buffer = new char[file_size + 1];
     fread(buffer, file_size, 1, file_ptrs[i]);
     fclose(file_ptrs[i]);
-    //printf("[Debug::Shader::Create] buffer:\n%s\n", buffer);
     if (i == 0) {
       shader_id = glCreateShader(GL_VERTEX_SHADER);
     } else if (i == 1) {
@@ -52,12 +62,12 @@ ShaderPtr Shader::Create(char const *const name,
     glShaderSource(shader_id, 1, &buffer, 0);
     glCompileShader(shader_id);
     CheckErrors(shader_id, static_cast<ShaderType>(i + 1));
-    glAttachShader(all_[name]->GetId(), shader_id);
+    glAttachShader(all_[name]->Id(), shader_id);
     glDeleteShader(shader_id); // This just sets the need_deleting flag.
     delete[] buffer;
   }
-  glLinkProgram(all_[name]->GetId());
-  CheckErrors(all_[name]->GetId(), ShaderType::kShaderTypeProgram);
+  glLinkProgram(all_[name]->Id());
+  CheckErrors(all_[name]->Id(), ShaderType::kShaderTypeProgram);
   return all_[name];
 }
 

@@ -2,15 +2,19 @@
 #include <cstdio>
 #include <map>
 #include <memory>
+#include "small_utility/log/logger.h"
+#include "small_utility/string/string.h"
 #include "command_and_dominate/glad.h"
 
 std::map<GLFWwindow *, WindowPtr> Window::all_;
 
-bool const Window::Initialize() {
+void Window::Initialize() {
   if (!glfwInit()) {
-    printf("[ERROR::Window::Initialize] Failed to initialize glfw. "
-           "Error code: %i.\n", glfwGetError(0));
-    return false;
+    using small_utility::string_stuff::String;
+    String error_buffer("failed to initialize glfw - error code: ");
+    error_buffer += String(glfwGetError(0));
+    small_utility::log_stuff::Fatal(error_buffer.ConstData());
+    throw WindowUninitialized(error_buffer.ConstData());
   }
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -19,7 +23,6 @@ bool const Window::Initialize() {
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
   glfwWindowHint(GLFW_SAMPLES, 4);
-  return true;
 }
 
 void Window::Terminate() {
@@ -42,9 +45,6 @@ WindowPtr Window::Create(
       cursor_position_callback,
       key_callback,
       scroll_callback);
-  if (!window_ptr->glfw_window_ptr_) {
-    return nullptr;
-  }
   window_ptr->Use();// glfwMakeContextCurrent(window_ptr->glfw_window_ptr_);
   //glfwSetInputMode(window_ptr->glfw_window_ptr_, GLFW_CURSOR,
   //                 GLFW_CURSOR_DISABLED);
@@ -57,8 +57,9 @@ WindowPtr Window::Create(
   glfwSetScrollCallback(window_ptr->glfw_window_ptr_, scroll_callback);
 
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-    printf("[ERROR::Window::Window] Failed to initialize glad.\n");
-    return nullptr;
+    char const *const error_buffer = "failed to initialize glad";
+    small_utility::log_stuff::Fatal(error_buffer);
+    throw std::runtime_error(error_buffer);
   }
   all_[window_ptr->GetGLFWWindowPtr()] = window_ptr;
   return window_ptr;
@@ -82,8 +83,11 @@ Window::Window(int const window_width, int const window_height,
   glfw_window_ptr_ = glfwCreateWindow(window_width, window_height,
                                       window_title, nullptr, nullptr);
   if(!glfw_window_ptr_) {
-    printf("[ERROR::Window::Window] Failed to create a window. "
-           "Error code: %i.\n", glfwGetError(0));
+    small_utility::string_stuff::String error_buffer(
+        "glfw failed to make a window - error code: ");
+    error_buffer += glfwGetError(0);
+    small_utility::log_stuff::Fatal(error_buffer.ConstData());
+    throw std::runtime_error(error_buffer.ConstData());
   }
 }
 

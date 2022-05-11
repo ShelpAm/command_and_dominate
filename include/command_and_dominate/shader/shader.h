@@ -1,5 +1,5 @@
-#ifndef COMMAND_AND_DOMINATE_SRC_SHADER_SHADER_H_
-#define COMMAND_AND_DOMINATE_SRC_SHADER_SHADER_H_
+#ifndef COMMAND_AND_DOMINATE_SHADER_SHADER_H_
+#define COMMAND_AND_DOMINATE_SHADER_SHADER_H_
 
 #include "command_and_dominate/shader/shader_forward.h"
 #include <map>
@@ -11,11 +11,10 @@
 class Shader {
  public:
   static void Terminate();
-  static ShaderPtr Create(
-      char const *const name,
-      char const *const vertex_file_name,
-      char const *const fragment_file_name,
-      char const *const geometry_file_name);
+  static ShaderPtr Create(char const *const name,
+                          char const *const vertex_file_name,
+                          char const *const fragment_file_name,
+                          char const *const geometry_file_name);
   Shader();
   ~Shader();
 
@@ -24,18 +23,21 @@ class Shader {
   void BindUniformBlock(UniformBlockPtr const &uniform_block_ptr);
   void Delete();
   //void SetLight(char const *const name, LightPtr const &light_ptr);
-  void Set1Int(char const *const name, int const value);
   void Set1Bool(char const *const name, bool const value);
   void Set1Float(char const *const name, float const value);
-  template<typename value_type> void SetVector2D(char const *const name,
+  void Set1Int(char const *const name, int const value);
+  template<typename value_type>
+  void SetVector2D(char const *const name,
                    Vector2DPtr<value_type> const &vector2d_ptr);
-  template<typename value_type> void SetVector3D(char const *const name,
+  template<typename value_type>
+  void SetVector3D(char const *const name,
                    Vector3DPtr<value_type> const &vector3d_ptr);
-  template<typename value_type> void SetMatrix4x4(char const *const name,
+  template<typename value_type>
+  void SetMatrix4x4(char const *const name,
                     Matrix4x4Ptr<value_type> const &matrix4x4_ptr);
 
-  unsigned int const GetId() const { return id_; }
-  int const GetUniformLocation(char const *const name) const {
+  unsigned int Id() const { return id_; }
+  int GetUniformLocation(char const *const name) const {
     return glGetUniformLocation(id_, name);
   }
 
@@ -47,4 +49,4 @@ class Shader {
 };
 
 
-#endif // !COMMAND_AND_DOMINATE_SRC_SHADER_SHADER_H_
+#endif  // COMMAND_AND_DOMINATE_SHADER_SHADER_H_
